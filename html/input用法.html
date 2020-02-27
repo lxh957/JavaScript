@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0">
+    <title>input</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .cl:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+        .box {
+            width: 70%;
+            margin: auto;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+
+        input:focus.textarea:focus {
+            outline: none;
+        }
+
+
+        input:checked+label {
+            background-color: red;
+        }
+
+        .file {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+        }
+
+        .file_hide {
+            color: #fff;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: rosybrown;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box cl">
+        <textarea class="cl" name="" id="" cols="30" rows="10">不可伸展</textarea>
+        <br class="cl">
+        <label for="a">性别</label>
+        <input id="a" type="text">
+        <br>
+        <input checked type="radio" id="b" name="s">
+        <label for="b">男</label>
+        <input type="radio" id="c" name="s">
+        <label for="c">女</label>
+        <br>
+        <div class="file_hide">点击上传</div>
+        <input class="file" type="file">
+        <br>
+        <select  style="margin-top: 105px;"  name="2" id="sele" >
+            <option value="1">111</option>
+            <option selected="selected" value="2">222</option>
+            <option value="3">333</option>
+            <option value="4">444</option>
+            <option value="5">555</option>
+        </select>
+    </div>
+    <script>
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>二级菜单选项卡</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            width: 100px;
+            background-color: gray;
+            line-height: 30px;
+        }
+
+        .box li input {
+            display: none;
+        }
+
+        .box li label {
+            display: block;
+        }
+
+        .box li dl {
+            height: 0;
+            padding-left: 20px;
+            transition: 1s;
+            overflow: hidden;
+        }
+
+        /* 必须加上label */
+        .box li input:checked+label+dl {
+            height: 120px;
+        }
+
+
+        /* 选项卡 */
+        .tab {
+            width: 300px;
+            overflow: hidden;
+            background-color: green;
+            position: relative;
+        }
+
+        .tab li {
+            text-align: center;
+            height: 300px;
+            line-height: 30px;
+            float: left;
+            width: 100px;
+            background-color: green;
+        }
+
+        .tab li input {
+            display: none;
+        }
+
+        .tab li label {
+            display: block;
+        }
+
+        .tab li div {
+            left: 0;
+            top: 30;
+            text-align: center;
+            height: 270px;
+            width: 300px;
+            background-color: green;
+            line-height: 100px;
+            display: none;
+            position: absolute;
+        }
+
+        .tab li input:checked+label {
+            background-color: red;
+        }
+
+        .tab li input:checked+label+div {
+            zoom: 1;
+            text-align: center;
+            height: 270px;
+            width: 300px;
+            background-color: green;
+            line-height: 100px;
+            display: block;
+            background-color: orange;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="box">
+        <li>
+            <input type="checkbox" id="a1">
+            <label for="a1">项目一</label>
+            <dl>
+                <dd>111</dd>
+                <dd>111</dd>
+                <dd>111</dd>
+                <dd>111</dd>
+            </dl>
+        </li>
+        <li>
+            <input type="checkbox" id="a2">
+            <label for="a2">项目二</label>
+            <dl>
+                <dd>111</dd>
+                <dd>111</dd>
+                <dd>111</dd>
+                <dd>111</dd>
+            </dl>
+        </li>
+        <li>
+            <input type="checkbox" id="a3">
+            <label for="a3">项目三</label>
+            <dl>
+                <dd>111</dd>
+                <dd>111</dd>
+                <dd>111</dd>
+                <dd>111</dd>
+            </dl>
+        </li>
+    </ul>
+
+    <!-- 选项卡 -->
+    <ul class="tab">
+        <li>
+            <input type="radio" id="x1" name="a2" checked>
+            <label for="x1">11111</label>
+            <div>内容一</div>
+        </li>
+        <li>
+            <input type="radio" id="x2" name="a2">
+            <label for="x2">22222</label>
+            <div>内容二</div>
+        </li>
+        <li>
+            <input type="radio" id="x3" name="a2">
+            <label for="x3">33333</label>
+            <div>内容三</div>
+        </li>
+    </ul>
+</body>
+
+</html>

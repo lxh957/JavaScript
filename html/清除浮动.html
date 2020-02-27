@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清除浮动</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    /* 万能清除法 */
+    .cl:after {
+        display: block;
+        clear: both;
+        content: "";
+        overflow: hidden;
+        visibility: hidden;
+        height: 0;
+    }
+
+    .box {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .box1 {
+        height: 200px;
+        width: 20%;
+        background-color: #f00;
+    }
+
+    .box2 {
+        height: 300px;
+        width: 50%;
+        background-color: chocolate;
+    }
+
+    .box3 {
+        height: 400px;
+        width: 30%;
+        background-color: darkgoldenrod;
+    }
+</style>
+
+<body>
+    <div class="box cl">
+        <div class="box1 ">111</div>
+        <div class="box2 "></div>
+        <div class="box3 "></div>
+    </div>
+
+</body>
+
+</html>

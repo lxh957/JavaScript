@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport">
+    <title>表单</title>
+    <style>
+        /* 表格宽高需要固定 */
+        .t {
+            text-align: center;
+            border: 1px solid gray;
+            margin: auto;
+            width: 300px;
+            height: 300px;
+            /* 外边距无法清除 */
+            /* cellspacing: 0 */
+            
+            /* 表格宽高固定，不然内容会撑开 */
+            table-layout:fixed;
+            /* 边框合并，默认是seperate */
+            /* border-collapse: collapse; */
+        }
+
+        td{
+            width: 100px;
+            height: 100px;
+            border: 1px solid green;
+        }
+
+    </style>
+</head>
+
+<body>
+    <fieldset>
+        <input type="text">
+        <legend align="center">标题</legend>
+    </fieldset>
+    <!-- 表单完整 -->
+    <table class="t" cellspacing=0>
+        <caption>标题</caption>
+        <thead>
+            <tr class="r">
+                <td>啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</td>
+                <td>aaa</td>
+                <td>aaa</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>111</td>
+                <td>111</td>
+                <td>111</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>sss</td>
+                <td>sss</td>
+                <td>sss</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</body>
+
+</html>

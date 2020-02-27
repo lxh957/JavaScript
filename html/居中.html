@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>居中</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        /* 定位居中方式 */
+        .box {
+            width: 400px;
+            height: 400px;
+            margin: 10px auto;
+            background-color: blueviolet;
+            position: relative;
+        }
+
+        .box1 {
+            position: absolute;
+            background-color: brown;
+            width: 300px;
+            height: 300px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: chartreuse;
+            margin: 50% 50%;
+            /* position: absolute; //方法二
+            left: 50%;
+            top: 50%; */
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+
+        /* 图片居中方式 */
+        /* 注意父元素和子元素分别写的什么内容 ，容易混淆 */
+        .box3 {
+            width: 400px;
+            height: 400px;
+            margin: auto;
+            background-color: darkgreen;
+            text-align: center;
+            font-size: 0;
+            line-height: 400px;
+        }
+
+        .box4 {
+            vertical-align: middle;
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box1">
+            <div class="box2">
+
+            </div>
+        </div>
+    </div>
+    <div class="box3">
+        <div class="box4">
+
+        </div>
+    </div>
+</body>
+
+</html>
