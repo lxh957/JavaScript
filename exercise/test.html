@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>算术题</title>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <style>
+        table {
+            border: 1px solid gray;
+            table-layout: fixed;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 200px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing=0>
+        <thead class="head">
+            <tr>
+                <td>第一列 </td>
+                <td>第二列 </td>
+                <td>第三列 </td>
+                <td>第四列 </td>
+                <td>第五列 </td>
+            </tr>
+        </thead>
+        <tbody class="content">
+        </tbody>
+    </table>
+    <button class="addDesc">生成加减法</button>
+    <button class="chengChu">生成乘除法</button>
+    <button class="all">一键生成所有</button>
+</body>
+<script>
+    trNum = 10;         //行数
+    var arr = ["×", "÷", "+", "-"]
+    // 随机数区间
+    var rendomSection = function (min, max) {
+        var max = parseInt(Math.random() * 90)
+        return min + max
+    }
+    for (var n = 0; n < trNum; n++) {
+        $(".content").append(`<tr></tr>`)
+    }
+    // 动态生成td列表
+    var trList = $(".content tr").size()
+    for (var i = 0; i < trList; i++) {
+        for (var m = 0; m < 5; m++) {
+            var opt = arr[parseInt(Math.random() * arr.length)]
+            if (opt == "+" || opt == "-") {
+                var num1 = rendomSection(100, 900)
+                var num2 = rendomSection(100, 900)
+            } else {
+                var num1 = rendomSection(10, 90)
+                var num2 = rendomSection(10, 90)
+            }
+            $(".content tr:eq" + "(" + i + ")").append(`<td>${num1}${opt}${num2}=?   </td>`)
+        }
+    }
+
+
+
+</script>
+
+</html>
