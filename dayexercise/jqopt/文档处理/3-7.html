@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档处理</title>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <style>
+        div{
+            border: 1px dashed red;
+        }
+    </style>
+</head>
+    
+<body>
+    <p>haerherherh</p>
+    <div></div>
+    <div></div>
+    <h1>haha</h1>
+    <span>前置</span>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <p class="test4">lalala</p>
+</body>
+<script>
+    // 要追加到目标中的内容
+    $("p").append("<b>啊哈哈哈哈</b>")
+    // 把所有段落追加到ID值为foo的元素中。
+    $("p").appendTo("div")
+    // 新建段落追加div中并加上一个class
+    $("p")
+        .appendTo("div")
+        .addClass("test1")
+        .end()
+        .addClass("test2")
+    // 要插入到目标元素内部前端的内容
+    $("span").prepend("h1")
+    $("h1").prepend($("span"))
+    // 把所有段落追加到class值为 box2 的元素中。
+    // $(".box1").prependTo(".box2")
+    // 在所有段落之后插入一些HTML标记代码。
+    $(".box2").after($(".box1"))
+    // 在所有段落之前插入一些HTML标记代码。
+    $(".box2").before($(".box1"))
+    // 把所有段落插入到一个元素之后。与 $("#foo").after("p")相同
+    $(".box2").insertAfter($(".box1"))
+    // 把所有段落插入到一个元素之前。与 $("#foo").before("p")相同。
+    $(".box2").insertBefore($(".box1"))
+    // 把所有的段落用一个新创建的div包裹起来
+    $(".test4").wrap("<div>new div</div>")
+</script>
+
+</html>

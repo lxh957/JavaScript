@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>文档处理</title>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <style>
+        div {
+            border: 1px solid red;
+            min-width: 100px;
+            min-height: 20px;
+        }
+
+        p {
+            border: 1px dashed green;
+        }
+    </style>
+</head>
+
+<body>
+    <p class="test1">test</p>
+    <div class="box">
+        <div class="box1">111</div>
+        <div class="box3">222</div>
+        <div class="box2">333</div>
+    </div>
+    <p class="p1"></p>
+    <p class="p1-2"></p>
+    <p class="p1-2-3"></p>
+    <span class="span1 bb">111</span>
+    <span class="span2 bb">222</span>
+    <span class="span3">333</span>
+</body>
+<script>
+    // 把所有的段落用一个新创建的div包裹起来
+    $("p").wrap("<div>new div</div>")
+    // 这个方法将移出元素的父元素。这能快速取消 .wrap()方法的效果
+    $("p").unwrap()
+    // 用一个生成的div将所有段落包裹起来
+    $("p").wrapAll("<div class='all'></div>")
+    // 把所有的段落标记替换成加粗的标记。
+    $("p").replaceWith("<b>加粗</b>")
+    // 用第一段替换第二段，你可以发现他是移动到目标位置来替换，而不是复制一份来替换。
+    $(".box2").replaceWith($(".box1"))
+    // 把所有的段落标记替换成加粗标记
+    $("<b>加粗替换</b>").replaceAll("p")
+    // 把所有段落的子元素（包括文本节点）删除
+    $("body").empty()
+    $("div").empty()
+    $("b").empty()
+    // 从DOM中把所有段落删除
+    $(".all").remove()
+    // 从DOM中把带有bb类的段落删除
+    $("span").remove(".bb")
+    // 从DOM中把所有段落删除   *** 不分先后顺序 ***
+    $("body").detach()
+    // 从DOM中把带有hello类的段落删除
+    $("body").detach("hellow") 
+    
+    // 创建元素
+    $('<div>qqq</div>').appendTo($("body"))
+    $('<span>rrr</span>').appendTo($("body"))
+    // 复制然后插入
+    $("span").clone().prependTo ("div")
+</script>
+
+</html>
