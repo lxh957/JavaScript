@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>事件</title>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+    <p>111</p>
+    <p>222</p>
+    <div>
+        盒子
+    </div>
+    <span>ttt </span>
+    <button id="old">.trigger("focus")</button>
+    <button id="new">.triggerHandler("focus")</button><br /><br />
+    <input type="text" value="To Be Focused" />
+</body>
+<script>
+    // 要在DOM就绪时执行的函数
+    $(document).ready(function () {
+        console.log("界面已经加载完毕")
+    })
+    $("p").on("click", function () {
+        alert("test")
+    })
+    // 在选择元素上移除一个或多个事件的事件处理函数。
+    // off() 方法移除用.on()绑定的事件处理程序
+    $("p").off()
+    // 为每个匹配元素的特定事件绑定事件处理函数。
+    $("p").bind("click", function () {
+        alert($(this).text())
+    })
+    // 为每一个匹配元素的特定事件（像click）绑定一个一次性的事件处理函数。
+    // 当所有段落被第一次点击的时候，显示所有其文本。
+    $("p").one("click", function () {
+        alert($(this).text())
+    })
+    // 在每一个匹配的元素上触发某类事件。
+    // 下面的代码可以显示一个"Hello World"
+    $("div").bind("output", function (event, a, b) {
+        alert(a + " " + b)
+    })
+    $("div").trigger("output", ["hellow", "word"])
+    // 把所有段落的所有事件取消绑定
+    $("div").unbind()
+    // 这个特别的方法将会触发指定的事件类型上所有绑定的处理函数。但不会执行浏览器默认动作，也不会产生事件冒泡。
+    $("#old").click(function () {
+        $("input").trigger("focus")
+    })
+    $("#new").click(function () {
+        $("input").triggerHandler("focus")
+    })
+    $("input").focus(function () {
+        $("<span>h2222222244</span>").appendTo("body").fadeOut(1000)
+    })
+    //.live() 方法能对一个还没有添加进DOM的元素有效，是由于使用了事件委托
+    // 从 jQuery 1.7 开始，不再建议使用 .live() 方法。请使用 .on() 来添加事件处理。
+    // 使用旧版本的用户，应该优先使用 .delegate() 来替代 .live()。 
+    $("div").delegate("button", "click", function () {
+        $("p").slideToggle()
+    })
+    // 用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件。
+    $("div").toggle(ShadowRoot)
+
+    // 当双击元素时，会发生 dblclick 事件。
+    $("span").dblclick(function () {
+        alert("haha")
+    })
+    // 隐藏JavaScript错误:
+    $(window).error(function () {
+        return true
+    })
+    // 当调整浏览器窗口的大小时，发生 resize 事件。
+    $(window).resize(function () {
+        alert("yqyq")
+    })
+    //当用户滚动指定的元素时，会发生 scroll 事件。
+    $(window).scroll(function () {
+        alert("updown")
+    })
+    // $("div").css("height", "1000px")
+    // 在当用户离开页面时，会发生 unload 事件。
+    $(window).unload(function () {
+        alert("bye now  ")
+    })
+    $(window).unload(function () { alert("Bye now!"); });
+
+
+</script>
+
+</html>
