@@ -43,8 +43,8 @@
         var string = "1:2:3:4:5"
         var str1 = str.split("")    //如果把空字符串 ("")用作分割符，那么字符串的每个字符之间都会被分割
         var str2 = str.split(" ")   //以空格为分隔符
-        var str3 = str.split("", 4)   //以空格为分隔符
-        var str4 = string.split(":")   //以空格为分隔符
+        var str3 = str.split("", 4)   //以空格为分隔符 长度为4
+        var str4 = string.split(":")   //以:为分隔符
         console.log(str1)   //["A", "A", " ", "B", "B", " ", "C", "C", " ", "D", "D"]
         console.log(str2)   //["AA", "BB", "CC", "DD"]
         console.log(str3)   //["A", "A", " ", "B"]
@@ -52,7 +52,7 @@
 
         // replace(): 在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
         var str = "hollow WORLD"
-        var reg = /l/ig     //o为要替换的关键字，不能加引号，否则替换不生效，i忽略大小写，g表示全局查找。
+        var reg = /l/ig     //l为要替换的关键字，不能加引号，否则替换不生效，i忽略大小写，g表示全局查找。
         var str1 = str.replace(reg, "*")
         console.log(str1)   //ho**ow WOR*D
 
