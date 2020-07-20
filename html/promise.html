@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //在实例化Promise时需要传入一个 函数executor 作为参数，并且在Promise构造函数执行时同步执行,
+    //这里的 executor 指(resolve,reject){}
+    //实例化过程中   executer  会立即执行
+
+    // const p = new Promise((resolve, reject) => {
+    //     console.log("processing")
+    // })
+
+    // Promise的几种状态：
+    // 1---pending: 初始状态，成功或失败状态。
+    // 2---fulfilled: 意味着操作成功完成。（resolve）
+    // 3---rejected: 意味着操作失败。
+    // 调用resolve则表示成功，调用rejected表示失败。
+    // 当Promise状态为fullfilled状态时执行then方法里的操作
+
+    // then方法里面有两个参数onfulfilled(Promise为fulfilled状态时执行) 和onrejected（Promise为rejected状态时执行）
+
+    // var p = new Promise((resolve, reject) => {
+    //     let flag = true
+    //     if (flag) {
+    //         resolve("success--success")
+    //     } else {
+    //         reject("loser--loser")
+    //     }
+    // })
+    // p.then((data) => {
+    //     console.log(data)
+    //     console.log("成功操作")
+    // }, (err) => {
+    //     console.log(err)
+    //     console.log("失败操作")
+    // })
+    
+    //由于Promise对象上有catch函数， 其实跟then方法中的第二个参数一样，
+    //就是在Promise状态为rejected时执行，then方法捕捉到Promise的状态为rejected，就执行catch方法里面的操作 
+    var p = new Promise((resolve, reject) => {
+        let flag = true
+        if (flag) {
+            resolve("success--success")
+        } else {
+            reject("loser--loser")
+        }
+    })
+    p.then((data) => {
+        console.log(data)
+        console.log("成功操作")
+    }).catch((err) => {
+        console.log(err)
+        console.log("失败操作")
+    })
+</script>
+
+</html>
