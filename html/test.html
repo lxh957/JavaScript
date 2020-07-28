@@ -12,44 +12,24 @@
         margin: 0;
         padding: 0;
     }
-
-    .box1 {
-        width: 100%;
-        height: 100px;
-    }
-
-    .box2 {
-        position: relative;
-        margin-top: 100px;
-        height: 80px;
-        overflow: auto;
-        width: 100%;
-        background-color: orange;
-    }
-
-    p {
-        width: 100px;
-        height: 15px;
-    }
 </style>
 
 <body>
-    <div class="box1">
-        <div class="box2">
-            <p>111</p>
-            <p>11222</p>
-            <p>1122333</p>
-            <p>112233444</p>
-            <p>112233444</p>
-            <p>112233444</p>
-            <p>112233444</p>
-            <p>112233444</p>
-        </div>
-    </div>
 
 </body>
 <script>
+    // 例一
+    let { sin, cos } = Math;
 
+    // 例二
+    const { log } = console;
+    let jsonData = {
+        id: 42,
+        status: "OK",
+        data: [867, 5309]
+    };
+    let { id, status, data: number } = jsonData;
+    log(id, status, number);
 </script>
 
 </html>
