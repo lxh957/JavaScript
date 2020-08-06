@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //Class 可以通过extends关键字实现继承，这比 ES5 的通过修改原型链实现继承，要清晰和方便很多。
+    // class Point {
+
+    // }
+    // class ExPoint extends Point {
+    //     constructor() {
+    //         super() //没加super会报错
+    //     }
+    // }
+    // let exponit = new ExPoint()
+    //上面代码中，ColorPoint继承了父类Point，但是它的构造函数没有调用super方法，导致新建实例时报错。
+
+
+    // 如果子类没有定义constructor方法，这个方法会被默认添加，代码如下。
+    // 也就是说，不管有没有显式定义，任何一个子类都有constructor方法。
+    // class ColorPoint extends Point {
+
+    // }
+    // // 等同于
+    // class ColorPoint1 extends Point {
+    //     constructor(...args) {
+    //         super(...args)
+    //     }
+    // }
+
+    //在构造函数种  只有在调用了super关键字以后 才能用this关键字 
+    //这个是因为 子类的构造实例 是基于父类的  只有super能够调用父类实例
+    class Point {
+        constructor(x, y) {
+            this.x = x
+            this.y = y
+        }
+    }
+    class ColorPoint extends Point {
+        constructor(x, y, color) {
+            // this.color = color   //ReferenceError  
+            super(x, y)
+            this.color = color //true
+        }
+    }
+    let cp = new ColorPoint(1, 2, 'red')
+    cp instanceof ColorPoint  //true
+    cp instanceof Point  //true
+    //上面代码中，实例对象cp同时是ColorPoint和Point两个类的实例
+
+    //父类的静态方法，也会被子类继承。
+    // class A {
+    //     static hellow() {
+    //         console.log('hellow')
+    //     }
+    // }
+    // class B extends A {
+    //     constructor() {
+    //         super()
+    //     }
+    // }
+    // B.hellow()
+
+    //Object.getPrototypeOf() 因此，可以使用这个方法判断，一个类是否继承了另一个类。
+    Object.getPrototypeOf(ColorPoint) === Point  //true
+
+
+    //  ---super 关键字 ---
+    //既可以当作函数使用，也可以当作对象使用。
+    //第一种情况  方super当作函数使用时  代表父类的构造函数 
+    //ES6 要求，子类的构造函数必须执行一次super函数。
+    class C {
+
+    }
+    class D extends C {
+        constructor() {
+            super()
+        }
+    }
+    //以上子类 D种的 super 代表调用父类C的构造函数 这样坐是必须的 
+    //以上即使 super 代表的是父类C的构造函数  但是 返回的依旧是子类D的实例   查看一下代码就知道了。
+    // class A {
+    //     constructor() {
+    //         console.log(new.target.name)
+    //     }
+    // }
+    // class B extends A {
+    //     constructor() {
+    //         super()
+    //     }
+    // }
+    // new A() //A
+    // new B() //B
+    //上面代码中，new.target指向当前正在执行的函数。
+
+    //作为函数时，super()只能用在子类的构造函数之中 用在其他地方就会报错
+
+    //第二种情况，super作为对象时
+    //在普通方法中，指向父类的原型对象   ---   在静态方法中，指向父类。
+    // class A {
+    //     p() {
+    //         return 2
+    //     }
+    // }
+    // class B extends A {
+    //     constructor() {
+    //         super()
+    //         console.log(super.p())
+    //     }
+    // }
+    // new B()
+    //上面代码中，子类B当中的super.p()，就是将super当作一个对象使用。
+    // 这时，super在普通方法之中，指向A.prototype，所以super.p()就相当于A.prototype.p()。 
+    // 这里需要注意，由于super指向父类的原型对象，所以定义在父类实例上的方法或属性，是无法通过super调用的。
+
+    // class A {
+    //     constructor() {
+    //         this.x = 1;
+    //     }
+    //     print() {
+    //         console.log(this.x);
+    //     }
+    // }
+    // class B extends A {
+    //     constructor() {
+    //         super();
+    //         this.x = 2;
+    //     }
+    //     m() {
+    //         super.print();
+    //     }
+    // }
+
+    // let b = new B();
+    // b.m() // 2
+    //上面代码中，super.print()虽然调用的是A.prototype.print()，
+    // 但是A.prototype.print()内部的this指向子类B的实例，导致输出的是2，而不是1。也就是说，实际上执行的是super.print.call(this)。
+
+    // class A {
+    //     constructor() {
+    //         this.x = 1;
+    //     }
+    // }
+    // class B extends A {
+    //     constructor() {
+    //         super();
+    //         this.x = 2;
+    //         super.x = 3;
+    //         console.log(super.x); // undefined
+    //         console.log(this.x); // 3
+    //     }
+    // }
+    // let b = new B();
+    //上面代码中，super.x赋值为3，这时等同于对this.x赋值为3。而当读取super.x的时候，读的是A.prototype.x，所以返回undefined。
+
+    //如果super作为对象，用在静态方法之中，  --  这时super将指向父类，而不是父类的原型对象。
+    class Parent {
+        static myMethod(msg) {
+            console.log('static', msg);
+        }
+
+        myMethod(msg) {
+            console.log('instance', msg);
+        }
+    }
+    class Child extends Parent {
+        static myMethod(msg) {
+            super.myMethod(msg);
+        }
+        myMethod(msg) {
+            super.myMethod(msg);
+        }
+    }
+    Child.myMethod(1); // static 1
+    Child.prototype.myMethod(2)
+    var child = new Child();
+    child.myMethod(2); // instance 2
+    //上面代码中，super在静态方法之中指向父类，在普通方法之中指向父类的原型对象。
+
+    //另外，在子类的静态方法中通过super调用父类的方法时，方法内部的this指向当前的子类，而不是子类的实例。 如下
+    class A {
+        constructor() {
+            this.x = 1;
+        }
+        static print() {
+            console.log(this.x);
+        }
+    }
+
+    class B extends A {
+        constructor() {
+            super();
+            this.x = 2;
+        }
+        static m() {
+            super.print();
+        }
+    }
+
+    B.x = 3;
+    B.m() // 3
+</script>
+
+</html>
