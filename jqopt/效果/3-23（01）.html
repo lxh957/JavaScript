@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>效果</title>
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+</head>
+
+<body>
+    <p style="display: none;">显影测试</p>
+    <button class="btn2">滑动</button>
+    <button class="btn1">滑动</button>
+    <button class="btn4">animate</button>
+    <div class="test" style="display: none;">teshrtsh</div>
+    <div class="test2" style="display: block;">wtfgwrgf</div>
+    <div class="test3" style="display: block;">wtfgwrgf</div>
+    <p class="test4"></p>
+    <p class="test5" style="display: none;"></p>
+    <p class="test6" style="display: block;">gawrgearrg</p>
+    <input type="text">
+</body>
+<script>
+    // 用缓慢的动画将隐藏的段落显示出来，历时600毫秒。
+    $("p").show("slow")
+    // 用迅速的动画将隐藏的段落显示出来，历时200毫秒。并在之后执行反馈！
+    $("P").show("fast", function () {
+        $(this).text("hahah")
+    })
+    // 将隐藏的段落用将近4秒的时间显示出来。。。并在之后执行一个反馈。。。
+    $("p").show(4000, function () {
+        $(this).text("4000ms")
+    })
+    // 用600毫秒的时间将段落缓慢的隐藏
+    $("p").hide("slow")
+    // 以滑动方式显示隐藏的 <div> 元素：
+    $(".btn2").click(function () {
+        $(".test").slideDown()
+    })
+    // 以滑动方式隐藏显示的 <   div> 元素：
+    $(".btn1").click(function () {
+        $(".test2").slideUp()
+    })
+    // 用600毫秒缓慢的将段落滑上或滑下
+    $(".test3").slideToggle("slow")
+    // 用600毫秒缓慢的将段落淡入
+    $(".test4").fadeIn("slow")
+    // 用600毫秒缓慢的将段落淡出
+    $(".test5").fadeOut("slow")
+    // 用600毫秒缓慢的将段落的透明度调整到0.66，大约2/3的可见度
+    $("p").fadeTo("slow", 0.66)
+    //用600毫秒缓慢的将段落淡入
+    $("p").fadeToggle("slow", "linear")
+    // 点击按钮后div元素的几个不同属性一同变化
+    $(".btn4").click(function () {
+        console.log("test   ")
+        $(".test6").animate(
+            {
+                width: "100px",
+                color: "red",
+                height: "100px",
+                fontSize: "10em"
+            }, 1000)
+    })
+    // 停止当前正在运行的动画：
+    $("p").stop()
+    // 设置一个延时来推迟执行队列中之后的项目。
+    $("p").fadeOut("slow").delay(800).fadeOut(200)
+    // 停止当前正在运行的动画 
+    // $("div").finish();
+
+    // 关闭页面上所有的动画。
+    // 把这个属性设置为true可以立即关闭所有动画(所有效果会立即执行完毕)。有些情况下可能需要这样，比如：
+    // * 你在配置比较低的电脑上使用jQuery。
+    // * 你的一些用户由于动画效果而遇到了 可访问性问题
+    // 当把这个属性设成false之后，可以重新开启所有动画。
+    jQuery.fx.off = true
+    $("input").focus(function () {
+        console.log("haha")
+        $("body").append("<span>haha</span>")
+    })
+
+</script>
+
+</html>

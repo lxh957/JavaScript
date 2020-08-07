@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串</title>
+</head>
+
+<body>
+    <script>
+        const str = "garfgbaeGEUSISG"
+        let str1 = "hellow world"
+        // 大小写转换
+        console.log(str.toLowerCase())
+        console.log(str.toUpperCase())
+
+        //charAt返回  指定下标的字符  否则返回空的字符串
+        console.log(str.charAt(0))
+
+        //chatCodeAt  返回指定字符编码
+        console.log(str.charCodeAt(0))
+
+        //indexof 
+        console.log(str.indexOf("g"))  //0
+        console.log(str.indexOf("a"))  //1
+        console.log(str.indexOf("s"))  //-1
+        console.log(str.indexOf("S"))  //11
+
+        //lastIdexOf
+        console.log(str1.lastIndexOf("A"))  //-1
+        console.log(str1.lastIndexOf("h"))  //0
+        console.log(str1.lastIndexOf("l"))  //10
+
+        let arr = "AA:BB:VV:dd"
+        let arr1 = "1,2,3,4"
+        //slice返回字符串中提取的子字符串   第一个参数一定小于第二个  截取的字符串包含前面 不包含后面
+        console.log(arr.slice(2))       //一个参数   从下标开始到最后  :BB:VV:dd
+        console.log(arr.slice(2, 4))     //两个参数    从下标到最后一个  不包含最后一个  :B
+        console.log(arr.slice(-4, -1))   //V:d
+
+        //sunstring  用法和slice一样 没有负值
+        console.log(arr.substring(2))   //:BB:VV:dd
+        console.log(arr.substring(2, 4))   //:B
+
+        //substr  这个主要是包含首尾的  同时有正负值
+        console.log(arr.substr(2))  //:BB:VV:dd   一个参数和slice没有什么区别
+        console.log(arr.substr(2, 4))  //:BB:   两个参数后面的会多一位
+        console.log(arr.substr(-3))  //负值 从后面开始 
+
+        // split  用指定字符将两者分开  生成一个数组
+        console.log(arr.split(":"))  //["AA", "BB", "VV", "dd"]
+        console.log(arr1.split(""))  //["1", ",", "2", ",", "3", ",", "4"]
+        console.log(arr1.split(" "))  //["1,2,3,4"]
+        console.log(arr.split("",3))  //["A", "A", ":"]
+        console.log(arr.split(":",2))  //["AA", "BB"]
+        
+        //replace 用字符串替换已有的字符串  或者用指定正则匹配的字符串去替换
+        console.log(arr.replace(":","-"))  //AA-BB:VV:dd
+        console.log(arr.replace("","--"))  //一般用 "" 只能替换第一个 --AA:BB:VV:dd
+        let reg = /:/ig
+        console.log(arr.replace(reg,"=")) //AA=BB=VV=dd
+        console.log(arr.match(reg))  // [":", ":", ":"]
+
+        //trim 去掉字符串首位空格
+        let test =   "  haha  "
+        console.log(test.trim())  //haha
+    </script>
+</body>
+
+</html>

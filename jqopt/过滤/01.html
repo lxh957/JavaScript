@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>过滤</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="protected"></div>
+    <div></div>
+    <p class="test1"></p>
+    <p></p>
+    <p>Hello</p>
+    <p>Hello Again</p>
+    <p class="selected">And Again</p>
+    <form>
+        <input type="text" name="name" value="John" />
+        <input type="text" name="password" value="password" />
+        <input type="text" name="url" value="http://ejohn.org/" />
+    </form>
+</body>
+<script>
+    // 给包含有某个类的元素进行一个动画。
+    $("div").click(function () {
+        $(this).hasClass("protected") && $(this)
+            .animate({ left: -10 })
+            .animate({ left: 10 })
+            .animate({ left: -10 })
+            .animate({ left: 10 })
+            .animate({ left: 0 })
+    })
+
+    // 保留带有select类的元素
+    $("p").filter(".test1")
+    // 保留第一个以及带有select类的元素
+    $("p").filter(".selected, :first")
+
+    // 其中至少有一个元素符合这个给定的表达式就返回true
+    $("input").parent().is("from")
+
+    // 把form中的每个input元素的值建立一个列表。
+    $("p").append(
+        $("input").map(function () {
+            return $(this).val()
+        }).get().join(", ")
+    )
+
+    // 保留包含特定后代的元素，去掉那些不含有指定后代的元素。
+    $("li").has("ul").css("background-color", "red")
+
+    // 从p元素中删除带有 selected 的class的元素
+    $("p").not($(".selected")[0])
+
+
+</script>
+
+</html>

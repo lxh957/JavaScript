@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <style>
+        div{
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <span id="foo:bar">111</span>
+    <span id="foo[bar]">222</span>
+    <span id="foo.bar">333</span>
+    <div>
+        <p>
+            <span>haha</span>
+        </p>
+    </div>
+    <form action="">
+        <label for="inp1">inp1</label>
+        <input id="inp1" type="text" class="pre">
+    </form>
+    <table>
+        <tr>
+            <td>Header 1</td>
+        </tr>
+        <tr>
+            <td>Value 1</td>
+        </tr>
+        <tr>
+            <td>Value 2</td>
+        </tr>
+    </table>
+    <div>yidong</div>
+    <h1>Header 1</h1>
+    <p>Contents 1</p>
+    <h2>Header 2</h2>
+    <p>Contents 2</p>
+    <button id="run">动起来</button>
+</body>
+<script>
+    // 查找含有特殊字符的元素
+    var ele1 = $("#foo\\:bar")  
+    var ele2 = $("#foo\\[bar\\]")
+    var ele3 = $("#foo\\.bar")
+    console.log(ele1)
+    console.log(ele2)
+    console.log(ele3)
+    // 找到每一个元素
+    var eve = $("*")
+    console.log(eve)
+    // 匹配所有跟在 label 后面的 input 元素
+    var inp1 = $("label + input")
+    console.log(inp1)
+    // 找到所有与表单同辈的 div  元素
+    $("form ~ div")
+    // 查找所有未选中的 input 元素
+    $("input:not(:checked)")
+    // 查找span的1、3、5...行（即索引值0、2、4...）
+    $("span:even")
+    // 查找表格的2、4、6行（即索引值1、3、5...）
+    $("span:odd")
+    // 查找第二第三行，即索引值是1和2，也就是比0大
+    $("tr:gt(0)")
+    // 查找第一第二行，即索引值是0和1，也就是比2小
+    $("tr:lt(2)")
+    // 给页面内所有标题加上背景色
+    $(":header").css("background","green")
+    // 只有对不在执行动画效果的元素执行一个动画特效
+    $("#run").click(function(){
+        $("div:not(:animated)").animate({left:"+=20"},1000)
+    })
+</script>
+
+</html>
