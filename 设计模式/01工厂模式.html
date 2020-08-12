@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //new 相关   每当new的时候 考虑  工厂模式 
+    //  举例 说明
+    //-----01  $('div')  ----- 
+    // $('div')    new $('div')  区别
+    class jQuery {
+        constructor(selector) {
+            //do  ...
+        }
+        append() { }
+        addClass() { }
+        html(data) { }
+        //  ... api
+    }
+    window.$ = function (selsctor) {
+        return new jQuery(selector)
+    }
+    // $  就是一个工厂  这个工厂封装一个函数   函数操作就是返回一个实例 
+
+    //-----02 React.creareElement -----
+    React.createElement(
+        type,
+        [props],
+        [...children]
+    )
+    // 解析
+    // class Vnode(tag, attrs, chilren){
+    //     //省略内部代码
+    // }
+    // React.creareElement = function (tag, attrs, chilren) {
+    //     return new Vnode(tag, attrs, chilren)
+    // }
+
+    //-----03 Vue异步组件 -----
+    Vue.component('async-example', function (resolve, reject) {
+        setTimeout(function () {
+            // 向 `resolve` 回调传递组件定义
+            resolve({
+                template: '<div>I am async!</div>'
+            })
+        }, 1000)
+    })
+    // Vue 允许你以一个工厂函数的方式定义你的组件，这个工厂函数会异步解析你的组件定义。
+    // Vue 只有在这个组件需要被渲染的时候才会触发该工厂函数，且会把结果缓存起来供未来重渲染。
+
+    //-- 设计原则验证 构造函数和创建者分离  符合开放性原则
+
+
+</script>
+
+</html>

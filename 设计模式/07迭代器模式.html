@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script>
+</head>
+
+<body>
+    <a href=""></a>
+    <a href=""></a>
+    <a href=""></a>
+    <a href=""></a>
+    <a href=""></a>
+</body>
+<script>
+    //
+    let arr = [1, 2, 3]
+    let docList = document.getElementsByTagName("a")
+    let $a = $('a')
+    // 以上三种不同对象  都有自己的方法可以遍历 
+    //现在需要一个办法来进行遍历 但是适配到所有内容对象
+    function each(data) {
+        var $data = $(data)   //生成迭代器
+        $data.each(function (key, val) {
+            console.log('key ' + key, 'val ' + val)
+        })
+    }
+    each(arr)
+    each(docList)
+
+    // 顺序遍历有序集合
+    // 不必知道集合内部结构
+
+    class Iterator {
+        constructor(container) {
+            this.list = container.list
+            this.index = 0
+        }
+        next() {
+            if (this.nextHas()) {
+                return this.list[this.index++]
+            }
+            return null
+        }
+        nextHas() {
+            if (this.index >= this.list.length) {
+                return false
+            }
+            return true
+        }
+    }
+
+    class Container {
+        constructor(list) {
+            this.list = list
+        }
+        //生成遍历器
+        getIterator() {
+            return new Iterator(this)
+        }
+    }
+    let arr1 = [1, 2, 3, 4, 5]
+    let container = new Container(arr1)
+    let iterator = container.getIterator()
+    while (iterator.nextHas()) {
+        console.log(iterator.next())
+    }
+</script>
+
+</html>

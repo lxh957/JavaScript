@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //系统中唯一被使用   
+    //一个类只有一个实例  例如商城系统的  购物车  登录框
+    // 单例模式  需要用到 java的private特性
+
+    // jQuery 只有一个 $
+
+    // 代码演示  登录框
+    class LoginForm {
+        constructor() {
+            this.state = 'hide'
+        }
+        show() {
+            if (this.state == 'show') {
+                alert("已经登录并显示")
+                return
+            }
+            this.state = 'show'
+            console.log("已经登录显示成功")
+        }
+        hide() {
+            if (this.state == 'hide') {
+                alert("已经隐藏")
+                return
+            }
+            this.state = 'hide'
+            console.log("已经隐藏成功")
+        }
+    }
+
+    LoginForm.getIndtence = (function () {
+        let instence
+        return function () {
+            if (!instence) {
+                instence = new LoginForm()
+            }
+            return instence
+        }
+    })()
+
+    let login1 = LoginForm.getIndtence()
+    login1.show()
+
+    let login2 = LoginForm.getIndtence()
+    login2.hide()
+    // 显示后隐藏  正常
+    // 如果显示后再次显示 会提示已经登录  login2.show()
+
+    console.log('login1 === login2', login1 === login2)
+
+    // 还有 vuex 以及 redux 中的  store 
+    // 无论从哪个地方获取的store都是一样的  数据必须共享给全局
+
+    //--设计原则验证 符合单一职责原则  之实例化唯一的对象
+
+
+
+</script>
+
+</html>

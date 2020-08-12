@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 场景   为对象添加新功能  不改变原有结构和功能
+    class Circle {
+        draw() {
+            console.log("画一个圆形")
+        }
+    }
+
+    class Decorator {
+        constructor(circle) {  //circle = Circle{}
+            this.circle = circle
+        }
+        draw() {
+            this.circle.draw()
+            this.addBorder(circle)
+        }
+        addBorder(circle) {
+            console.log("画边框")
+        }
+    }
+    let circle = new Circle()
+    circle.draw()
+
+    let dec = new Decorator(circle)
+    dec.draw()
+
+    //场景应用实例  ES7装饰器   配置环境 装饰类 装饰方法
+</script>
+
+</html>

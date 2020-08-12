@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //重要模式
+    // 发布订阅
+    // 一对n   
+
+    // 主题-----保存状态  状态改变之后即出发所有观察者对象
+    class Subject {
+        constructor() {
+            this.observers = []
+            this.state = 0
+        }
+        getState() {
+            return this.state
+        }
+        setState(state) {
+            this.state = state
+            this.notifyAllObservers()
+        }
+        notifyAllObservers() {
+            this.observers.map(observer => {
+                observer.updata()
+            })
+        }
+        attach(observer) {
+            this.observers.push(observer)
+        }
+    }
+
+    // 创建观察者类
+    class Observer {
+        constructor(name, subject) {
+            this.name = name
+            this.subject = subject
+            this.subject.attach(this)
+        }
+        updata() {
+            console.log(`${this.name} updata,state ${this.subject.getState()}`)
+        }
+    }
+
+    let s = new Subject()
+    let o1 = new Observer('o1', s)
+    let o2 = new Observer('o2', s)
+    let o3 = new Observer('o3', s)
+    s.setState(1)
+    s.setState(2)
+    s.setState(3)
+
+    // 场景
+    // 网页绑定事件   Promise    jQuery callback   nodejs自定义事件
+    //nodejs中 http请求    vue和react组件生命周期触发   vue得watch事件
+
+    // 将主题和观察者分离  不是主动触发 而是被动监听  两者解耦
+
+
+</script>
+
+</html>

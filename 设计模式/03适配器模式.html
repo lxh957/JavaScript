@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 场景
+    //   旧的接口 和 新的接口  不兼容   需要中间转换一下
+    class China {
+        place() {
+            return "中国标准"
+        }
+    }
+
+    class ZhongZhuan {
+        constructor() {
+            this.place = new China()
+        }
+        updata() {
+            let info = this.place.place()
+            return `${info} 转换 国际标准`
+        }
+    }
+
+    let inter = new ZhongZhuan()
+    console.log(inter.updata())
+
+    // 场景实例
+    // 封装旧的接口
+    // vue的computed属性
+
+    // 设计原则验证  -- 将旧的接口和使用者进行分离   符合开放性原则
+</script>
+
+</html>
