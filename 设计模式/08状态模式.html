@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 需要深入在看看
+    // 状态的变化    每次变化都会触发一个逻辑
+    // 不用总用if-else来控制
+    // 以下示例  交通状态灯得到变化  
+    class State {
+        constructor(color) {
+            this.color = color
+        }
+        handle(context) {
+            console.log(`the ${this.color} light`)
+            context.setState(this)
+        }
+    }
+
+    class Context {
+        constructor() {
+            this.state = null
+        }
+        getState() {
+            return this.state
+        }
+        setState(state) {
+            this.state = state
+        }
+    }
+
+    const context = new Context()
+    const red = new State('red')
+    const yellow = new State('yellow')
+    const green = new State('green')
+    red.handle(context)
+    console.log(context.getState())
+    yellow.handle(context)
+    console.log(context.getState())
+    green.handle(context)
+    console.log(context.getState())
+
+    // 状态对象和主题对象分离  状态的逻辑变化单独处理
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Receiver {
+        exct() {
+            console.log("执行")
+        }
+    }
+    class Commond {
+        constructor(receiver) {
+            this.receiver = receiver
+        }
+        cmd() {
+            console.log("触发命令")
+            this.receiver.exct()
+        }
+    }
+    class Invoker {
+        constructor(commond) {
+            this.commond = commond
+        }
+        invoker() {
+            console.log("开始")
+            this.commond.cmd()
+        }
+    }
+
+    let re = new Receiver()
+    let co = new Commond(re)
+    let invo = new Invoker(co)
+    invo.invoker()
+    
+
+</script>
+
+</html>

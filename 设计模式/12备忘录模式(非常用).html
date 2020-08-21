@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 备忘录类
+    class Memento {
+        constructor(content) {
+            this.content = content
+        }
+        getContent() {
+            return this.content
+        }
+    }
+    // 备忘列表
+    class CareTiker {
+        constructor() {
+            this.list = []
+        }
+        add(momento) {
+            this.list.push(momento)
+        }
+        get(index) {
+            return this.list[index]
+        }
+    }
+    class Editor {
+        constructor() {
+            this.content = null
+        }
+        setContent(content) {
+            this.content = content
+        }
+        getContent() {
+            return this.content
+        }
+        saveConetentToMemento() {
+            return new Memento(this.content)
+        }
+        getContentFromMemento(memento) {
+            this.content = memento.getContent()
+        }
+    }
+
+    let editor = new Editor()
+    let careTiker = new CareTiker()
+
+    // 开始编辑
+    editor.setContent("111")    //编辑器编辑111
+    editor.setContent("222")    //编辑器编辑222
+    careTiker.add(editor.saveConetentToMemento())     //备份编辑内容
+    editor.setContent("333")
+    careTiker.add(editor.saveConetentToMemento())     //备份编辑内容
+    editor.setContent("444")
+
+    console.log(editor.getContent())
+    editor.getContentFromMemento(careTiker.get(1))  //撤销
+    console.log(editor.getContent())
+    editor.getContentFromMemento(careTiker.get(0))  //撤销
+    console.log(editor.getContent())
+
+</script>
+
+</html>

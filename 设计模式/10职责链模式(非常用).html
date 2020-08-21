@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Approval {
+        constructor(name) {
+            this.name = name
+            this.nextAction = null
+        }
+        setAction(action) {
+            this.nextAction = action
+        }
+        handel() {
+            console.log(`${this.name}审批`)
+            if (this.nextAction != null) {
+                this.nextAction.handel()
+            }
+        }
+    }
+
+    let a1 = new Approval("员工")
+    let a2 = new Approval("经理")
+    let a3 = new Approval("总监")
+    a1.setAction(a2)
+    a2.setAction(a3)
+    a1.handel()
+</script>
+
+</html>

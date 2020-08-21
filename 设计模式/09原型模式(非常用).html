@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // new 一个新的对象  可能开销比较大  克隆一个自己
+    const prototype = {
+        fullName() {
+            return this.first + this.last
+        },
+        getName() {
+            alert("hi")
+        }
+    }
+
+    let x = Object.create(prototype)
+    let y = Object.create(prototype)
+    x.first = "A"
+    x.last = "B"
+    x.getName() 
+    alert(x.fullName())
+
+</script>
+
+</html>
