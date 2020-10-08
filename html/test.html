@@ -1,29 +1,235 @@
 <!DOCTYPE html>
-<html>
- 
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>使用伪类，在元素前或后插入内容</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/1.7.4/skins/default/index.css" />
+    <script src="https://g.alicdn.com/de/prismplayer/1.7.4/prism-h5-min.js"></script>
     <style>
-        div {
-            margin: 100px;
+        .animation-piont {
+            height: 1000px;
+            width: 1000px;
+            margin: 0 auto;
+            background-color: #DEA18F;
             position: relative;
-            width: 300px;
-            height: 50px;
-            background-color: #bbb;
-            padding: 4px
         }
- 
-        div:before {
-            content: "";
+
+        .circle-one {
             position: absolute;
-            left: 100px;
-            bottom: -2px;
-            width: 33%;
-            height: 5px;
-            background-color: red
+            width: 50px;
+            height: 50px;
+            background: black;
+            left: 0;
+            top: 100px;
+            /* filter: alpha(opacity:10); */
+            /* opacity: 1; */
+            animation: one 2s infinite;
+            -webkit-animation: one 2s infinite;
+            /* border-radius: 0; */
+            /* position: relative; */
+            /* float: right; */
+            /* right: 200px; */
+        }
+
+        /* @keyframes one {
+            from {
+                left: 100px;
+            }
+
+            to {
+                left: 0;
+            }
+
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: .5;
+            }
+        } */
+
+        .circle-two {
+            width: 25px;
+            height: 25px;
+            background: #fff;
+            /* filter: alpha(opacity:10); */
+            opacity: 0.1;
+            position: relative;
+            animation: two 5s infinite;
+            -webkit-animation: two 5s infinite;
+            /* Safari and Chrome */
+            border-radius: 50%;
+            position: relative;
+            float: right;
+            right: 200px;
+        }
+
+        @keyframes two {
+            from {
+                right: 200px;
+                top: 10px;
+            }
+
+            to {
+                right: 240px;
+                top: -10px;
+            }
+
+            0% {
+                opacity: 0.1;
+            }
+
+            100% {
+                opacity: 0.03;
+            }
+        }
+
+        .circle-three {
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            /* filter: alpha(opacity:10); */
+            opacity: 0.1;
+            position: relative;
+            animation: three 5s infinite;
+            -webkit-animation: three 5s infinite;
+            /* Safari and Chrome */
+            border-radius: 50%;
+            position: relative;
+            float: right;
+            right: 350px;
+        }
+
+        @keyframes three {
+            from {
+                right: 300px;
+                top: 10px;
+            }
+
+            to {
+                right: 280px;
+                top: -45px;
+            }
+
+            0% {
+                opacity: 0.1;
+            }
+
+            100% {
+                opacity: 0.03;
+            }
+        }
+
+        .circle-four {
+            width: 50px;
+            height: 50px;
+            background: red;
+            /* filter: alpha(opacity:100); */
+            opacity: 1;
+            position: relative;
+            animation: four 10s infinite;
+            -webkit-animation: four 10s infinite;
+            /* Safari and Chrome */
+            position: relative;
+            float: left;
+            top: 100px;
+        }
+
+        @keyframes four {
+            from {
+                left: 10px;
+            }
+
+            to {
+                left: 280px;
+            }
+
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.1;
+            }
         }
     </style>
-    <div>请看这个div的“上边框”是只有一半的</div>
+</head>
+
+<body>
+
+    <body>
+        <div class="animation-piont">
+            <div class="piont circle-one"></div>
+            <!-- <div class="piont circle-two"></div>
+            <div class="piont circle-three"></div>
+            <div class="piont circle-four"></div> -->
+        </div>
     </body>
+    <script>
+        // console.log("%c%s", 'color:red', 'aaa')
+        // var test = []
+        // for (var i = 0; i < 1000; i++) {
+        //     test.push("ahgiaerhgier")
+        //     if (i == 999) {
+        //         console.log(test)
+        //     }
+        // }
+
+
+        // 初始化播放器
+        // var player = new prismplayer({
+        //     id: "J_prismPlayer", // 容器id
+        //     source: "http://cloud.video.taobao.com/play/u/2554695624/p/1/e/6/t/1/fv/102/28552077.mp4",  //视频地址
+        //     cover: "http://cdn.img.mtedu.com/images/assignment/day_3.jpg",  //播放器封面图
+        //     autoplay: false,      // 是否自动播放
+        //     width: "100%",       // 播放器宽度
+        //     height: "450px",      // 播放器高度
+        //     playsinline: true,
+        //     seekable: true,
+        //     skinLayout: [{
+        //         "name": "bigPlayButton",
+        //         "align": "cc",
+        //         //"x": 30,
+        //         //"y": 80
+        //     }, {
+        //         "align": "blabs",
+        //         "x": 0,
+        //         "y": 0,
+        //         "name": "controlBar",
+        //         "children": [
+        //             {
+        //                 "align": "tl",
+        //                 "x": 15,
+        //                 "y": 26,
+        //                 "name": "playButton"
+        //             }, {
+        //                 "align": "tl",
+        //                 "x": 10,
+        //                 "y": 24,
+        //                 "name": "timeDisplay"
+        //             }, {
+        //                 "align": "tr",
+        //                 "x": 20,
+        //                 "y": 25,
+        //                 "name": "fullScreenButton"
+        //             }, {
+        //                 "align": "tr",
+        //                 "x": 20,
+        //                 "y": 25,
+        //                 "name": "volume"
+        //             },
+        //             {
+        //                 "name": "progress",
+        //                 "align": "tlabs",
+        //                 "x": 0,
+        //                 "y": 0
+        //             }
+        //         ]
+        //     }]
+        // });
+    </script>
+</body>
+
 </html>
