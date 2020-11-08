@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 一切皆对象   most things is object
+
+    // 建立对象  人   
+    //属性  ：  姓名 年龄 爱好 
+    //基本行为  打招呼
+
+    //构造器中添加人物属性  constructor
+    function Person(name, age, hobby) {
+        this.name = name
+        this.age = age
+        this.hobby = hobby
+    }
+    //创人物行为(方法) 原型对象中添加   打招呼
+    Person.prototype.greeting = function () {
+        alert("hi im ---" + this.name + "---how about you")
+    }
+    //创建普通人物  person1
+    let person1 = new Person("person1", 18, ["basketball", "football"])
+    person1.greeting()
+
+    //创建老师 继承一般属性  新增属性 教师学科
+    function Teacher(name, age, subject) {
+        Person.call(this, name, age)
+        this.subject = subject
+    }
+    // 新人物我可以继承原视方法
+    Teacher.prototype = Object.create(Person.prototype)
+    // 新的人物也可以直接写自己的方法 
+    Teacher.prototype.greeting1 = function () {
+        alert("hi im ---myself---" + this.name + "---how about you")
+    }
+    Teacher.prototype.constructor = Teacher
+    let teacher1 = new Teacher("teacher1", 40, "math")
+    teacher1.greeting()
+    teacher1.greeting1()
+
+
+
+</script>
+
+</html>

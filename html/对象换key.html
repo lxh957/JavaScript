@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jq.js"></script>
+</head>
+
+<body>
+    <div id="formId">
+
+    </div>
+</body>
+<script>
+
+
+    let data = {
+        name: "andy",
+        age: 15
+    }
+    let keyMap = {
+        name: "名字",
+        age: "年龄"
+    }
+    let obj = Object.keys(data).reduce((newData, key) => {
+        let newobj = keyMap[key] || key  //名字
+        newData[newobj] = data[key]   //名字 = andy
+        return newData
+    }, {})
+    //{like: "yse", 名字: "andy", 年龄: 15}
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>

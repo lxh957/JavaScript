@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jq.js"></script>
+</head>
+<style>
+    p:before {
+        content: 'Hello';
+        color: red;
+    }
+
+    p:after {
+        content: 'Tom';
+        color: red;
+    }
+</style>
+
+<body>
+    <div id="formId">
+        <button onclick="test()">点击</button>
+        <button onclick="test1()">点击</button>
+    </div>
+</body>
+<script>
+    $.ajax({
+        type: "POST",
+        headers: {
+            "Accept": "application/ json; charset=utf - 8",
+            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjM5NWMyYzlhZTBjZTFlYzdiZGU5Yzk4MDU5MzEyMGI1OTU3YzIyY2FiOTlkMzQxYmY1Y2Y5ZWQ0ZGMzYzJhN2U3MDI5MzhjNDY4YWU5ZjcyIn0.eyJhdWQiOiIxIiwianRpIjoiMzk1YzJjOWFlMGNlMWVjN2JkZTljOTgwNTkzMTIwYjU5NTdjMjJjYWI5OWQzNDFiZjVjZjllZDRkYzNjMmE3ZTcwMjkzOGM0NjhhZTlmNzIiLCJpYXQiOjE1OTQ4NjY0MzcsIm5iZiI6MTU5NDg2NjQzNywiZXhwIjoxNjI2NDAyNDM3LCJzdWIiOiIxNCIsInNjb3BlcyI6W119.DDUV-7HvAPq5XnIRCnx1BavklligoCzMxPgoUTC0koLMhDu-zA08YnacXE2oaA_QaVId_qcjwe6Q6S6FY0Fo7J11RVIZejAuhmbHpBsNebn1v1YRfJo3yQnVUo1ldWY4zW7wjVLF_vqOkZiN3xStna2f8QUOBJ4GecKGKmLv-mNJsp_Zk7vLz68ODW76Ftuzkxqy-GZ1rTTfB1cOQxRP-xJDATtEp9C9IHp7d5T-CSYsGVAd57wMUNX5nKucp-3O-fmh-IeHRSz9PZnCwtgnd__-2S97x07AG9fH8hvVitsFyb5-kEcroDofA4aVacm2BP_LLPmWUBcNHCQDrl6r87F2-mvKpdV3Qu8UnH3s9okJmTW3ezVXaGLqD1x_mbL0bLIyqZEQA-2kOfAt84TJnbAoFkol6bxJz5bGGzDP0_bMP69SZQmV9W-eusRUfsbQUjHv5vMYRPJk5oz-xJGTysGC0xZbGE9HyBjpXuDQrhrndHgxCuSigZCmP_4Hc4P3gH_aFGHAFNtKM0YIFXr1vCGVuyWV_uEb9yKQUaMGsVw7OU460Gnw0YYBH_J36WIsK456bY5JxWmLesm7RBXCVnRYCdAKin0tUTIh0O_VJaTS0ZBX2CAt4_1HJ0dwtrMEMIHH3E9FIDU_wMzY-Rp1qPeDkFd7hC-M4rf4IDm2IH4"
+        },
+        url: "http://zoozv.com/api/sport/logout",
+        // contentType: "jsonp",
+        dataType: "jsonp",
+        success: function (data) {
+
+        }, error: function (data) {
+            console.log(data)
+        }
+    })
+    let query = {
+        uid: 123,
+        username: "123",
+        refresh_token: "123"
+    };
+    function test() {
+        console.log("test")
+        autoAjax("post", "https://adminapi.viba.club/admin/logout", query, {
+            ok: res => {
+                if (res.state == 0 && res.data) {
+                    sessionStorage.token = "";
+                }
+            },
+            p: () => {
+            },
+            error: e => {
+                console.log(e);
+            }
+        });
+    }
+    function test1() {
+        console.log("test")
+        autoAjax("post", "http://zoozv.com/api/sport/logout", {}, {
+            ok: res => {
+                console.log(res)
+            },
+            p: () => {
+            },
+            error: e => {
+                console.log(e);
+            }
+        });
+    }
+
+    function autoAjax(type, url, json, obj, head) {
+        console.log("test")
+        obj = obj || {};
+        head = head || {};
+        obj.p = obj.p || function () {
+        }; //Public 公共的
+        obj.ok = obj.ok || function () {
+        }
+        // if (sessionStorage.token && sessionStorage.userName) {
+        //     head['Authorization'] = sessionStorage.token;
+        //     console.log(sessionStorage.token)
+        // }
+        head['Authorization'] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IkI2YzVjMTFmZTQ0MWFjZjZGNzFjYWI5YzVkZWJiNmVlLT0ifQ.eyJpc3MiOiJhZG1pbmFwaS52aWJhLmNsdWIiLCJhdWQiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MCIsImp0aSI6IkI2YzVjMTFmZTQ0MWFjZjZGNzFjYWI5YzVkZWJiNmVlLT0iLCJpYXQiOjE1OTQ4ODgwNjEsIm5iZiI6MTU5NDg4ODEyMSwiZXhwIjoxNTk0OTc0NDYxLCJ1aWQiOjE3LCJ0eXBlIjoiYWRtaW4ifQ.BHHUfvKP6Z2wJHZh3so43UpdAVnKkJSVI9JNa7rkpLc";
+        // head['Authorization'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IkI2YzVjMTFmZTQ0MWFjZjZGNzFjYWI5YzVkZWJiNmVlLT0ifQ.eyJpc3MiOiJhZG1pbmFwaS52aWJhLmNsdWIiLCJhdWQiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODA4MCIsImp0aSI6IkI2YzVjMTFmZTQ0MWFjZjZGNzFjYWI5YzVkZWJiNmVlLT0iLCJpYXQiOjE1OTQ4ODgwNjEsIm5iZiI6MTU5NDg4ODEyMSwiZXhwIjoxNTk0OTc0NDYxLCJ1aWQiOjE3LCJ0eXBlIjoiYWRtaW4ifQ.BHHUfvKP6Z2wJHZh3so43UpdAVnKkJSVI9JNa7rkpLc";
+        let ajax = {
+            type: type || 'post',
+            url: /^http|^\/\//.test(url) ? url : URL.api + url,
+            data: json !== '' && !!head["Content-Type"] && head["Content-Type"] === "application/json" ? JSON.stringify(json) : json,
+            success: function (res, code, xhr) {
+                let t = xhr.getResponseHeader('Content-Type');
+                if (!/^application\/json/.test(t)) {
+                    obj.p();
+                    return console.log(url + ' -> not json');
+                }
+                if (typeof res === 'string') return console.log(res);
+                obj.p();
+                res.state <= 200 ? obj.ok(res) : console.log(res.message);
+            },
+            error: function (res) {
+                let t = res.getResponseHeader('Content-Type');
+                obj.p();
+                if (!/^application\/json/.test(t)) return console.log(url + ' -> not json');
+                res = res || {};
+                !!obj.error ? obj.error(res) : console.log(res.status);
+            },
+        };
+        ajax.beforeSend = function (xhr) {
+            for (let i in head) xhr.setRequestHeader(i, head[i]);
+        };
+        return $.ajax(ajax)
+    }
+
+</script>
+
+</html>
