@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js//jq.js"></script>
+</head>
+
+<body>
+    <button onclick="getData()">请求</button>
+</body>
+<script>
+    function getData() {
+        console.log("123")
+        $.ajax({
+            type: 'GET',
+            url: `http://zoozv.com/api/sport/getnames?sp=1`,
+            // query: {
+            //     sp: 0,
+            //     ds: 06/23/2020,
+            //     dd: 06/23/2020,
+            // },
+            datetype: "jsonp",          //声明后，arg会自动处理传入success,字符串--->对象
+            success: function (arg) {
+                console.log(arg)
+            }
+        })
+    }
+</script>
+
+</html>

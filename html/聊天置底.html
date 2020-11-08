@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <ul id="talkArea" style="border: 1px solid;width: 100px;height: 100px;overflow: auto;"></ul>
+    <input type="text" id="getMsg">
+    <button id="sendMsg" style="width: 50px;height: 50px;">发送</button>
+</body>
+<script>
+    $("#sendMsg").click(function () {
+        //从input中获取数据，挂载到ul上
+        $("#talkArea").append((`
+        <li>${$("#getMsg").val()}</li>
+        `)).siblings('#getMsg').val('');
+        //然后重点来了，
+        var talkArea = document.getElementById('talkArea');
+        talkArea.scrollTop = talkArea.scrollHeight;
+    })
+</script>
+
+</html>

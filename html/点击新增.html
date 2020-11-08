@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加元素</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <button onclick="add()">界面已有元素--点击新增</button>
+        <button onclick="addwill()">界面没有元素--点击新增</button>
+    </div>
+    <ul id="ulList">
+        <li>
+            <p>哈罗 ，小茉莉：我是界面已经有的内容哦</p>
+            <input type="text">
+        </li>
+    </ul>
+</body>
+<script>
+    //触发事件  添加元素  元素可以自定义
+    function add() {
+        //找到界面的 ele  这个ele也可以自己定义  看需求
+        const ele = document.getElementById("ulList")
+        // 将ele这个元素添加到body里面去
+        $("#ulList").clone().appendTo("body")
+    }
+
+    // 例如这个  就是自定义的内容
+    function addwill() {
+        $("<div><p>我是自定义内容哦</p></div>").appendTo("body")
+    }
+
+</script>
+
+</html>

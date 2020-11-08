@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // class Cal{
+    //     constructor(w,h){
+    //         this.w = w
+    //         this.h = h
+    //     }
+    //     js(){
+    //         return this.w/this.h
+    //     }
+    // }
+    // let xiaoming = new Cal(2,1)
+    // console.log(xiaoming.js())
+
+    function Cal(w, h) {
+        this.w = w
+        this.h = h
+    }
+    Cal.prototype.js = function(){
+        return this.w / this.h
+    }
+
+    let xiaohong = new Cal(2,1)
+    console.log(xiaohong.js())
+</script>
+
+</html>
